@@ -1,0 +1,958 @@
+/* ==========================================================================
+   CONFORMITY ALLIANCE — CONTACT PAGE PREMIUM STYLES (contact-page.css)
+   Ultra-luxury, scroll-animated, responsive Contact Us page design.
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------
+   Scroll Reveal Animations
+   ------------------------------------------------------------------------- */
+.reveal-up,
+.reveal-left,
+.reveal-right {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-up { transform: translateY(35px); }
+.reveal-left { transform: translateX(-35px); }
+.reveal-right { transform: translateX(35px); }
+.reveal-up.revealed,
+.reveal-left.revealed,
+.reveal-right.revealed {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.footer-brand-header { display: flex !important; align-items: center !important; gap: 12px !important; margin-bottom: 14px !important; }
+.footer-brand-header .footer-logo-img, .footer-logo-img { height: 48px !important; max-height: 48px !important; width: auto !important; max-width: 55px !important; object-fit: contain; }
+.footer-brand-header .footer-logo-text, .footer-logo-text { height: 38px !important; max-height: 38px !important; width: auto !important; max-width: 180px !important; object-fit: contain; filter: brightness(1.2); }
+
+/* =========================================================================
+   1. CONTACT HERO — Cinematic Gradient Banner
+   ========================================================================= */
+.cnt-hero {
+  position: relative;
+  background: radial-gradient(circle at 85% 20%, #1b2c4e 0%, #0d1629 55%, #070c17 100%);
+  color: #ffffff;
+  padding: 4.5rem 1.5rem 5rem;
+  overflow: hidden;
+  text-align: center;
+}
+.cnt-hero-bg-overlay {
+  position: absolute; inset: 0; opacity: 0.05;
+  background-image: radial-gradient(#dfb76c 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+.cnt-hero-glow-1 {
+  position: absolute; width: 550px; height: 550px; right: -100px; top: -100px;
+  background: radial-gradient(circle, rgba(198,154,78,0.2) 0%, transparent 70%);
+  filter: blur(70px); pointer-events: none;
+}
+.cnt-hero-glow-2 {
+  position: absolute; width: 450px; height: 450px; left: -100px; bottom: -120px;
+  background: radial-gradient(circle, rgba(29,78,216,0.15) 0%, transparent 70%);
+  filter: blur(80px); pointer-events: none;
+}
+
+.cnt-hero-container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.cnt-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(198, 154, 78, 0.12);
+  border: 1px solid rgba(198, 154, 78, 0.35);
+  color: #fae8c6;
+  padding: 6px 18px;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.cnt-hero-badge i {
+  color: #dfb76c;
+}
+
+.cnt-hero-title {
+  font-size: 3rem;
+  line-height: 1.2;
+  color: #ffffff;
+  margin: 0;
+  font-family: var(--font-display, "Playfair Display", Georgia, serif);
+  font-weight: 700;
+}
+.cnt-hero-title .ca-hl {
+  background: linear-gradient(135deg, #fae8c6 0%, #dfb76c 60%, #c69a4e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.cnt-hero-lead {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 720px;
+  margin: 0;
+}
+
+.cnt-hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 0.5rem;
+}
+.cnt-hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  backdrop-filter: blur(8px);
+}
+.cnt-hero-pill i {
+  color: #dfb76c;
+}
+
+/* =========================================================================
+   2. TOP CONTACT CHANNELS (3 CARDS)
+   ========================================================================= */
+.cnt-channels-section {
+  padding: 0 1.5rem;
+  margin-top: -2.5rem;
+  position: relative;
+  z-index: 10;
+}
+.cnt-channels-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.cnt-channel-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem 1.75rem;
+  box-shadow: 0 16px 36px rgba(13, 22, 41, 0.08);
+  border: 1px solid rgba(198, 154, 78, 0.18);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+.cnt-channel-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ddb972, #c69a4e);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.cnt-channel-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(13, 22, 41, 0.14);
+  border-color: rgba(198, 154, 78, 0.45);
+}
+.cnt-channel-card:hover::before {
+  opacity: 1;
+}
+
+.cnt-channel-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+.cnt-channel-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(198,154,78,0.15) 0%, rgba(22,33,58,0.08) 100%);
+  color: #a97f38;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+  border: 1px solid rgba(198,154,78,0.25);
+  transition: all 0.3s ease;
+}
+.cnt-channel-card:hover .cnt-channel-icon {
+  background: linear-gradient(135deg, #c69a4e 0%, #16213a 100%);
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.cnt-channel-title-group h3 {
+  font-size: 1.2rem;
+  color: #16213a;
+  margin: 0 0 4px;
+  font-weight: 700;
+  font-family: var(--font-display, "Playfair Display", Georgia, serif);
+}
+.cnt-channel-title-group p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.cnt-channel-body {
+  margin-bottom: 1.5rem;
+}
+.cnt-channel-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0d1629;
+  display: block;
+  margin-bottom: 6px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.cnt-channel-value:hover {
+  color: #c69a4e;
+}
+.cnt-channel-subtext {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.cnt-channel-action {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.cnt-btn-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+.cnt-btn-primary {
+  background: linear-gradient(135deg, #16213a 0%, #0d1629 100%);
+  color: #ffffff;
+  border: 1px solid rgba(198,154,78,0.3);
+}
+.cnt-btn-primary:hover {
+  background: linear-gradient(135deg, #c69a4e 0%, #a97f38 100%);
+  color: #0d1629;
+  border-color: #c69a4e;
+}
+.cnt-btn-outline {
+  background: #f8fafc;
+  color: #16213a;
+  border: 1px solid #cbd5e1;
+}
+.cnt-btn-outline:hover {
+  background: #25d366;
+  color: #ffffff;
+  border-color: #25d366;
+}
+
+/* =========================================================================
+   3. MAIN INTERACTIVE CONSULTATION HUB (2 COLUMNS)
+   ========================================================================= */
+.cnt-hub-section {
+  padding: 5rem 1.5rem;
+  background: #f8fafc;
+  position: relative;
+}
+.cnt-hub-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Form Container */
+.cnt-form-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2.75rem 2.5rem;
+  box-shadow: 0 20px 45px rgba(13, 22, 41, 0.07);
+  border: 1px solid rgba(198, 154, 78, 0.2);
+  position: relative;
+}
+.cnt-form-header {
+  margin-bottom: 2rem;
+}
+.cnt-form-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #a97f38;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.cnt-form-title {
+  font-size: 2rem;
+  color: #0d1629;
+  margin: 0 0 10px;
+  font-family: var(--font-display, "Playfair Display", Georgia, serif);
+  font-weight: 700;
+}
+.cnt-form-subtitle {
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Grid form layout */
+.cnt-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.cnt-form-full {
+  grid-column: 1 / -1;
+}
+
+.cnt-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cnt-field-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cnt-field-group label i {
+  color: #a97f38;
+  font-size: 0.85rem;
+}
+.cnt-field-group label .req {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.cnt-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.cnt-input-wrap i.input-icon {
+  position: absolute;
+  left: 14px;
+  color: #94a3b8;
+  font-size: 0.95rem;
+  pointer-events: none;
+  transition: color 0.2s;
+}
+.cnt-input-wrap input,
+.cnt-input-wrap select,
+.cnt-input-wrap textarea {
+  width: 100%;
+  padding: 12px 14px 12px 42px;
+  border-radius: 10px;
+  border: 1.5px solid #e2e8f0;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 0.92rem;
+  font-family: inherit;
+  transition: all 0.25s ease;
+  outline: none;
+}
+.cnt-input-wrap textarea {
+  padding-left: 14px;
+  resize: vertical;
+  min-height: 110px;
+}
+.cnt-input-wrap input:focus,
+.cnt-input-wrap select:focus,
+.cnt-input-wrap textarea:focus {
+  border-color: #c69a4e;
+  box-shadow: 0 0 0 3px rgba(198, 154, 78, 0.18);
+  background: #fdfcf9;
+}
+.cnt-input-wrap input:focus + i.input-icon,
+.cnt-input-wrap select:focus + i.input-icon {
+  color: #c69a4e;
+}
+
+/* Radio Consultation Pill Selector */
+.cnt-mode-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 4px;
+}
+.cnt-mode-option {
+  position: relative;
+}
+.cnt-mode-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.cnt-mode-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 8px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #475569;
+}
+.cnt-mode-label i {
+  font-size: 1.1rem;
+  color: #94a3b8;
+  transition: color 0.2s;
+}
+.cnt-mode-option input[type="radio"]:checked + .cnt-mode-label {
+  border-color: #c69a4e;
+  background: rgba(198, 154, 78, 0.08);
+  color: #16213a;
+  box-shadow: 0 4px 12px rgba(198, 154, 78, 0.12);
+}
+.cnt-mode-option input[type="radio"]:checked + .cnt-mode-label i {
+  color: #c69a4e;
+}
+
+/* Submit Button */
+.cnt-submit-btn {
+  width: 100%;
+  padding: 15px 24px;
+  background: linear-gradient(135deg, #16213a 0%, #0d1629 100%);
+  color: #ffffff;
+  border: 1.5px solid #c69a4e;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  letter-spacing: 0.03em;
+  box-shadow: 0 8px 24px rgba(13, 22, 41, 0.25);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+.cnt-submit-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(60deg, transparent, rgba(223, 183, 108, 0.25), transparent);
+  transform: rotate(30deg) translateY(-100%);
+  transition: transform 0.6s ease;
+}
+.cnt-submit-btn:hover {
+  background: linear-gradient(135deg, #c69a4e 0%, #a97f38 100%);
+  color: #070c17;
+  border-color: #dfb76c;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(198, 154, 78, 0.35);
+}
+.cnt-submit-btn:hover::after {
+  transform: rotate(30deg) translateY(100%);
+}
+
+.cnt-form-footer-note {
+  text-align: center;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* Right Side: Authority & Benefits Info */
+.cnt-info-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* Emergency Advisory Card */
+.cnt-advisory-card {
+  background: linear-gradient(145deg, #0d1629 0%, #16213a 100%);
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 2.2rem;
+  border: 1px solid rgba(198, 154, 78, 0.3);
+  box-shadow: 0 16px 36px rgba(7, 12, 23, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+.cnt-advisory-card::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 160px; height: 160px;
+  background: radial-gradient(circle, rgba(198,154,78,0.2) 0%, transparent 70%);
+  filter: blur(20px);
+}
+.cnt-advisory-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(220, 38, 38, 0.2);
+  border: 1px solid rgba(220, 38, 38, 0.4);
+  color: #fca5a5;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+.cnt-advisory-title {
+  font-size: 1.4rem;
+  font-family: var(--font-display, "Playfair Display", Georgia, serif);
+  margin: 0 0 10px;
+  color: #ffffff;
+}
+.cnt-advisory-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.25rem;
+}
+.cnt-advisory-contact-box {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(198, 154, 78, 0.25);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cnt-advisory-contact-box .phone-label {
+  font-size: 0.78rem;
+  color: #dfb76c;
+  display: block;
+}
+.cnt-advisory-contact-box .phone-num {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+}
+.cnt-advisory-contact-box a.urgent-call-btn {
+  background: #c69a4e;
+  color: #070c17;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.cnt-advisory-contact-box a.urgent-call-btn:hover {
+  background: #fae8c6;
+}
+
+/* Why Consult Benefits List */
+.cnt-benefits-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2.2rem;
+  border: 1px solid rgba(198, 154, 78, 0.18);
+  box-shadow: 0 16px 36px rgba(13, 22, 41, 0.05);
+}
+.cnt-benefits-title {
+  font-size: 1.25rem;
+  color: #16213a;
+  margin: 0 0 1.25rem;
+  font-weight: 700;
+  font-family: var(--font-display, "Playfair Display", Georgia, serif);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cnt-benefits-title i {
+  color: #c69a4e;
+}
+.cnt-benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.cnt-benefit-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.cnt-benefit-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(198, 154, 78, 0.12);
+  color: #a97f38;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  border: 1px solid rgba(198, 154, 78, 0.25);
+}
+.cnt-benefit-text h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 2px;
+}
+.cnt-benefit-text p {
+  font-size: 0.83rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* Operational Hours Card */
+.cnt-hours-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid rgba(198, 154, 78, 0.18);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.cnt-hours-icon {
+  font-size: 2rem;
+  color: #c69a4e;
+  flex-shrink: 0;
+}
+.cnt-hours-info h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #16213a;
+  margin: 0 0 4px;
+}
+.cnt-hours-info p {
+  font-size: 0.85rem;
+  color: #475569;
+  margin: 0;
+}
+
+/* =========================================================================
+   4. PAN-INDIA COVERAGE & FAQ ACCORDION SECTION
+   ========================================================================= */
+.cnt-extra-section {
+  padding: 5rem 1.5rem;
+  background: #ffffff;
+  position: relative;
+}
+.cnt-extra-container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.cnt-extra-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+/* Coverage Hub */
+.cnt-coverage-header h3 {
+  font-size: 2rem;
+  color: #0d1629;
+  margin: 0 0 10px;
+  font-family: var(--font-display, "Playfair Display", Georgia, serif);
+  font-weight: 700;
+}
+.cnt-coverage-header p {
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+}
+
+.cnt-states-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.cnt-state-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1e293b;
+  transition: all 0.25s ease;
+}
+.cnt-state-item i {
+  color: #c69a4e;
+  font-size: 0.9rem;
+}
+.cnt-state-item:hover {
+  background: rgba(198, 154, 78, 0.08);
+  border-color: rgba(198, 154, 78, 0.4);
+  transform: translateX(4px);
+}
+
+/* FAQ Accordion */
+.cnt-faq-header h3 {
+  font-size: 2rem;
+  color: #0d1629;
+  margin: 0 0 10px;
+  font-family: var(--font-display, "Playfair Display", Georgia, serif);
+  font-weight: 700;
+}
+.cnt-faq-header p {
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+}
+
+.cnt-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.cnt-accordion-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+  transition: border-color 0.25s;
+}
+.cnt-accordion-item.active {
+  border-color: #c69a4e;
+  box-shadow: 0 6px 18px rgba(198, 154, 78, 0.08);
+}
+.cnt-accordion-trigger {
+  width: 100%;
+  padding: 16px 20px;
+  background: none;
+  border: none;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #16213a;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.cnt-accordion-trigger:hover,
+.cnt-accordion-item.active .cnt-accordion-trigger {
+  color: #a97f38;
+}
+.cnt-accordion-icon {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  transition: transform 0.3s ease, color 0.2s;
+}
+.cnt-accordion-item.active .cnt-accordion-icon {
+  transform: rotate(180deg);
+  color: #a97f38;
+}
+.cnt-accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 20px;
+  color: #475569;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.cnt-accordion-item.active .cnt-accordion-body {
+  max-height: 250px;
+  padding: 0 20px 18px;
+}
+
+/* =========================================================================
+   5. MAP & DIRECTIONS SECTION
+   ========================================================================= */
+.cnt-map-section {
+  padding: 4rem 1.5rem 5rem;
+  background: #f1f5f9;
+  position: relative;
+}
+.cnt-map-container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.cnt-map-card {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(13, 22, 41, 0.08);
+  border: 1px solid rgba(198, 154, 78, 0.25);
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+}
+.cnt-map-info-pane {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cnt-map-info-pane h3 {
+  font-size: 1.85rem;
+  color: #0d1629;
+  margin: 0 0 10px;
+  font-family: var(--font-display, "Playfair Display", Georgia, serif);
+  font-weight: 700;
+}
+.cnt-map-info-pane p {
+  color: #64748b;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+.cnt-loc-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.cnt-loc-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.cnt-loc-item i {
+  color: #c69a4e;
+  font-size: 1.1rem;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+.cnt-loc-item span {
+  font-size: 0.9rem;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.cnt-directions-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #16213a 0%, #0d1629 100%);
+  color: #ffffff;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #c69a4e;
+  transition: all 0.25s ease;
+  align-self: flex-start;
+}
+.cnt-directions-btn:hover {
+  background: linear-gradient(135deg, #c69a4e 0%, #a97f38 100%);
+  color: #070c17;
+  transform: translateY(-2px);
+}
+
+.cnt-map-frame-pane {
+  position: relative;
+  min-height: 380px;
+}
+.cnt-map-frame-pane iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  border: 0;
+}
+
+/* =========================================================================
+   6. RESPONSIVE MEDIA QUERIES
+   ========================================================================= */
+@media (max-width: 1024px) {
+  .cnt-channels-container {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .cnt-hub-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .cnt-extra-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .cnt-map-card {
+    grid-template-columns: 1fr;
+  }
+  .cnt-hero-title {
+    font-size: 2.3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .cnt-hero {
+    padding: 3.5rem 1rem 4rem;
+  }
+  .cnt-hero-title {
+    font-size: 1.85rem;
+  }
+  .cnt-form-card {
+    padding: 1.75rem 1.25rem;
+  }
+  .cnt-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .cnt-mode-selector {
+    grid-template-columns: 1fr;
+  }
+  .cnt-states-grid {
+    grid-template-columns: 1fr;
+  }
+  .cnt-map-info-pane {
+    padding: 2rem 1.25rem;
+  }
+}
