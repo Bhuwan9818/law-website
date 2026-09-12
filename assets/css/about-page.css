@@ -1,0 +1,552 @@
+/* ==========================================================================
+   CONFORMITY ALLIANCE — ABOUT PAGE PREMIUM STYLES (about-page.css)
+   Ultra-luxury, scroll-animated, full-width About Us page design.
+   Extends site.css. Uses the existing navy/gold design system tokens.
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------
+   Scroll Reveal Animations
+   ------------------------------------------------------------------------- */
+.reveal-up,
+.reveal-left,
+.reveal-right {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-up { transform: translateY(40px); }
+.reveal-left { transform: translateX(-40px); }
+.reveal-right { transform: translateX(40px); }
+.reveal-up.revealed,
+.reveal-left.revealed,
+.reveal-right.revealed {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+
+/* =========================================================================
+   1. ABOUT HERO — Cinematic Full-Width Banner
+   ========================================================================= */
+.abt-hero {
+  position: relative;
+  background: radial-gradient(circle at 85% 20%, #1b2c4e 0%, #0d1629 55%, #070c17 100%);
+  color: #ffffff;
+  padding: 5rem 2rem 5.5rem;
+  overflow: hidden;
+  min-height: 520px;
+}
+.abt-hero-bg-overlay {
+  position: absolute; inset: 0; opacity: 0.06;
+  background-image: radial-gradient(#dfb76c 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+.abt-hero-glow-1 {
+  position: absolute; width: 500px; height: 500px; right: -120px; top: -80px;
+  background: radial-gradient(circle, rgba(198,154,78,0.22) 0%, transparent 70%);
+  filter: blur(60px); pointer-events: none;
+}
+.abt-hero-glow-2 {
+  position: absolute; width: 400px; height: 400px; left: -100px; bottom: -100px;
+  background: radial-gradient(circle, rgba(29,78,216,0.12) 0%, transparent 70%);
+  filter: blur(80px); pointer-events: none;
+}
+
+.abt-hero-container {
+  max-width: 1360px; margin: 0 auto; position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 4rem; align-items: center;
+}
+.abt-hero-content {
+  display: flex; flex-direction: column; gap: 1.2rem;
+}
+.abt-hero-title {
+  font-size: 3.2rem; line-height: 1.15; color: #ffffff; margin: 0;
+  font-family: var(--font-display); font-weight: 700;
+}
+.abt-hero-title .ca-hl {
+  background: linear-gradient(135deg, #fae8c6 0%, #dfb76c 60%, #c69a4e 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+.abt-hero-lead {
+  font-size: 1.08rem; line-height: 1.75; color: rgba(255, 255, 255, 0.78);
+  max-width: 600px; margin: 0;
+}
+.abt-hero-actions {
+  display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 0.5rem;
+}
+
+/* Hero Image Frame */
+.abt-hero-visual { position: relative; }
+.abt-hero-image-frame {
+  position: relative;
+  border-radius: var(--radius-lg); overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(198,154,78,0.25);
+  height: 420px;
+}
+.abt-hero-image-frame img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.abt-hero-image-frame:hover img {
+  transform: scale(1.03);
+}
+.abt-hero-badge {
+  position: absolute; bottom: -16px; right: -16px;
+  background: var(--navy); color: #fff; border-radius: var(--radius-sm);
+  padding: 16px 22px; box-shadow: var(--shadow-xl);
+  border: 1px solid var(--gold); display: flex; align-items: center; gap: 14px;
+  z-index: 5;
+}
+.abt-hero-badge-icon {
+  font-size: 1.6rem; color: var(--gold-light);
+}
+.abt-hero-badge-val {
+  font-family: var(--font-display); font-size: 1.3rem; font-weight: 800;
+  color: var(--gold-light); line-height: 1;
+}
+.abt-hero-badge-txt {
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.7); margin: 3px 0 0;
+}
+
+/* Breadcrumb */
+.abt-breadcrumb {
+  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 10px; z-index: 5;
+  font-size: 0.82rem; color: rgba(255,255,255,0.55);
+}
+.abt-breadcrumb a { color: var(--gold-light); font-weight: 600; }
+.abt-breadcrumb a:hover { color: #fff; }
+.abt-breadcrumb i { font-size: 0.6rem; }
+
+@media (max-width: 992px) {
+  .abt-hero { padding: 3.5rem 1.5rem 4.5rem; }
+  .abt-hero-container { grid-template-columns: 1fr; gap: 2.5rem; }
+  .abt-hero-title { font-size: 2.5rem; }
+  .abt-hero-image-frame { height: 320px; }
+}
+@media (max-width: 576px) {
+  .abt-hero-title { font-size: 2rem; }
+  .abt-hero-image-frame { height: 260px; }
+  .abt-hero-badge { bottom: -10px; right: -10px; padding: 12px 16px; }
+}
+
+
+/* =========================================================================
+   2. OUR STORY — Mission & Origin
+   ========================================================================= */
+.abt-story {
+  background: var(--surface); padding: 6rem 2rem; position: relative;
+}
+.abt-story-container {
+  max-width: 1300px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 4.5rem; align-items: flex-start;
+}
+.abt-story-title {
+  font-size: 2.4rem; color: var(--navy); margin-bottom: 1.4rem;
+  font-family: var(--font-display); line-height: 1.2;
+}
+.abt-story-text {
+  font-size: 1.02rem; line-height: 1.85; color: var(--ink-soft); margin-bottom: 1rem;
+}
+
+/* Mission & Vision Cards */
+.abt-story-right {
+  display: flex; flex-direction: column; gap: 1.5rem;
+  position: sticky; top: 100px;
+}
+.abt-story-card {
+  position: relative; border-radius: var(--radius-md); overflow: hidden;
+  background: linear-gradient(145deg, #0d1629 0%, #172647 100%);
+  border: 1px solid var(--navy-card-border);
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+}
+.abt-story-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--gold);
+}
+.abt-story-card-glow {
+  position: absolute; top: -40px; right: -40px; width: 120px; height: 120px;
+  background: radial-gradient(circle, rgba(198,154,78,0.25) 0%, transparent 70%);
+  border-radius: 50%; pointer-events: none;
+}
+.abt-story-card-inner {
+  padding: 2rem 1.8rem; position: relative; z-index: 2;
+}
+.abt-story-card-icon {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(198,154,78,0.15); border: 1.5px solid var(--gold);
+  color: var(--gold-light); display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; margin-bottom: 1.2rem;
+}
+.abt-story-card h3 {
+  font-size: 1.3rem; color: #ffffff; margin-bottom: 0.6rem;
+  font-family: var(--font-display);
+}
+.abt-story-card p {
+  font-size: 0.92rem; color: rgba(255,255,255,0.72); line-height: 1.7; margin: 0;
+}
+
+@media (max-width: 992px) {
+  .abt-story-container { grid-template-columns: 1fr; gap: 3rem; }
+  .abt-story-right { position: static; }
+}
+
+
+/* =========================================================================
+   3. IMPACT STATISTICS — Animated Numbers
+   ========================================================================= */
+.abt-stats {
+  background: radial-gradient(circle at 50% 10%, #15223c 0%, #0d1629 100%);
+  padding: 5.5rem 2rem; position: relative; overflow: hidden;
+  color: #ffffff; text-align: center;
+}
+.abt-stats-bg-pattern {
+  position: absolute; inset: 0; opacity: 0.04;
+  background-image: radial-gradient(#dfb76c 1px, transparent 1px);
+  background-size: 28px 28px; pointer-events: none;
+}
+.abt-stats-container {
+  max-width: 1300px; margin: 0 auto; position: relative; z-index: 2;
+}
+.abt-stats-header { margin-bottom: 3.5rem; }
+.abt-stats-title {
+  font-size: 2.3rem; color: #ffffff; margin-bottom: 0.5rem;
+  font-family: var(--font-display);
+}
+.abt-stats-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+}
+.abt-stat-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md); padding: 2.5rem 1.8rem;
+  text-align: center; transition: var(--transition);
+}
+.abt-stat-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--gold); transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+}
+.abt-stat-icon {
+  width: 58px; height: 58px; border-radius: 50%;
+  background: rgba(198, 154, 78, 0.15); border: 1.5px solid var(--gold);
+  color: var(--gold-light); display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; margin: 0 auto 1.2rem;
+}
+.abt-stat-number {
+  font-family: var(--font-display); font-size: 2.4rem; font-weight: 800;
+  color: var(--gold-light); line-height: 1; margin-bottom: 8px;
+}
+.abt-stat-label {
+  font-size: 0.88rem; color: rgba(255,255,255,0.7); font-weight: 500;
+  line-height: 1.4; text-transform: uppercase; letter-spacing: 0.03em;
+}
+
+@media (max-width: 992px) {
+  .abt-stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 576px) {
+  .abt-stats-grid { grid-template-columns: 1fr; }
+  .abt-stat-number { font-size: 2rem; }
+}
+
+
+/* =========================================================================
+   4. WHY CHOOSE US — Core Differentiators
+   ========================================================================= */
+.abt-why {
+  background: var(--surface); padding: 6rem 2rem; position: relative;
+}
+.abt-why-container { max-width: 1300px; margin: 0 auto; }
+.abt-why-header { text-align: center; margin-bottom: 3.5rem; }
+
+.abt-why-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+}
+.abt-why-card {
+  background: var(--cream-soft);
+  border: 1px solid var(--border); border-radius: var(--radius-md);
+  padding: 2.5rem 2rem; transition: var(--transition);
+  position: relative; overflow: hidden;
+}
+.abt-why-card::before {
+  content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+  background: transparent; transition: var(--transition);
+}
+.abt-why-card:hover {
+  transform: translateY(-8px); box-shadow: var(--shadow-lg);
+  border-color: var(--gold);
+}
+.abt-why-card:hover::before {
+  background: var(--gold-grad);
+}
+
+.abt-why-icon-wrap {
+  width: 56px; height: 56px; border-radius: var(--radius-sm);
+  background: var(--cream); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; color: var(--gold-dark); margin-bottom: 1.4rem;
+  transition: var(--transition);
+}
+.abt-why-card:hover .abt-why-icon-wrap {
+  background: var(--navy); color: var(--gold-light); border-color: var(--navy);
+  transform: scale(1.06);
+}
+.abt-why-card h4 {
+  font-size: 1.2rem; color: var(--navy); margin-bottom: 0.6rem;
+  font-family: var(--font-display);
+}
+.abt-why-card p {
+  font-size: 0.92rem; color: var(--muted); line-height: 1.7; margin: 0;
+}
+
+@media (max-width: 992px) {
+  .abt-why-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 576px) {
+  .abt-why-grid { grid-template-columns: 1fr; }
+}
+
+
+/* =========================================================================
+   5. LEADERSHIP — Principal Consultant Spotlight
+   ========================================================================= */
+.abt-leader {
+  background: radial-gradient(circle at 30% 50%, #15223c 0%, #0d1629 80%);
+  padding: 6rem 2rem; position: relative; overflow: hidden; color: #ffffff;
+}
+.abt-leader-bg-glow {
+  position: absolute; width: 600px; height: 600px; right: -200px; top: -150px;
+  background: radial-gradient(circle, rgba(198,154,78,0.12) 0%, transparent 70%);
+  filter: blur(80px); pointer-events: none;
+}
+.abt-leader-container {
+  max-width: 1300px; margin: 0 auto; position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: flex-start;
+}
+.abt-leader-title {
+  font-size: 2.3rem; color: #ffffff; margin-bottom: 1.8rem;
+  font-family: var(--font-display);
+}
+
+/* Profile */
+.abt-leader-profile {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 1.5rem;
+}
+.abt-leader-avatar {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--gold-grad); color: var(--navy-darker);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; font-weight: 800; font-family: var(--font-display);
+  box-shadow: 0 6px 18px rgba(198,154,78,0.4); flex-shrink: 0;
+}
+.abt-leader-info h3 {
+  font-size: 1.3rem; color: #ffffff; margin: 0 0 4px;
+}
+.abt-leader-role {
+  font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--gold-light); font-weight: 700;
+}
+.abt-leader-text {
+  font-size: 0.98rem; line-height: 1.8; color: rgba(255,255,255,0.78); margin-bottom: 1rem;
+}
+
+/* Highlights */
+.abt-leader-highlights {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 1.5rem;
+}
+.abt-leader-highlight-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.88);
+}
+.abt-leader-highlight-item i {
+  color: var(--gold-light); font-size: 1rem; flex-shrink: 0;
+}
+
+/* Stats Grid */
+.abt-leader-visual {
+  display: flex; flex-direction: column; gap: 1.5rem;
+}
+.abt-leader-stats-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+}
+.abt-leader-stat-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm); padding: 1.6rem 1.2rem;
+  text-align: center; transition: var(--transition);
+}
+.abt-leader-stat-box:hover {
+  background: rgba(198,154,78,0.12); border-color: var(--gold);
+  transform: translateY(-4px);
+}
+.abt-leader-stat-val {
+  font-family: var(--font-display); font-size: 1.8rem; font-weight: 800;
+  color: var(--gold-light); line-height: 1; margin-bottom: 6px;
+}
+.abt-leader-stat-label {
+  font-size: 0.78rem; color: rgba(255,255,255,0.6); text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Quote Card */
+.abt-leader-quote-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md); padding: 2rem 1.8rem;
+  position: relative;
+  border-left: 3px solid var(--gold);
+}
+.abt-leader-quote-icon {
+  color: rgba(198,154,78,0.35); font-size: 1.8rem; margin-bottom: 0.8rem;
+}
+.abt-leader-quote-card blockquote {
+  font-size: 1rem; color: rgba(255,255,255,0.85); line-height: 1.75;
+  font-style: italic; margin: 0 0 1rem; font-family: var(--font-display);
+}
+.abt-leader-quote-card cite {
+  font-size: 0.82rem; color: var(--gold-light); font-weight: 700;
+  font-style: normal; text-transform: uppercase; letter-spacing: 0.05em;
+}
+
+@media (max-width: 992px) {
+  .abt-leader-container { grid-template-columns: 1fr; gap: 3rem; }
+  .abt-leader-highlights { grid-template-columns: 1fr; }
+}
+
+
+/* =========================================================================
+   6. SERVICES OVERVIEW — What We Offer
+   ========================================================================= */
+.abt-services-overview {
+  background: var(--cream-soft); padding: 6rem 2rem;
+}
+.abt-services-container { max-width: 1300px; margin: 0 auto; }
+.abt-services-header { text-align: center; margin-bottom: 3.5rem; }
+
+.abt-services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+}
+.abt-service-item {
+  background: #ffffff; border: 1px solid var(--border);
+  border-radius: var(--radius-md); padding: 2.2rem 1.8rem;
+  transition: var(--transition); display: flex; flex-direction: column;
+  position: relative; overflow: hidden; text-decoration: none; color: inherit;
+}
+.abt-service-item::before {
+  content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+  background: transparent; transition: var(--transition);
+}
+.abt-service-item:hover {
+  transform: translateY(-8px); box-shadow: var(--shadow-lg);
+  border-color: var(--gold); color: inherit;
+}
+.abt-service-item:hover::before {
+  background: var(--gold-grad);
+}
+
+.abt-service-icon-box {
+  width: 56px; height: 56px; border-radius: var(--radius-sm);
+  background: var(--cream); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; color: var(--gold-dark); margin-bottom: 1.4rem;
+  transition: var(--transition);
+}
+.abt-service-item:hover .abt-service-icon-box {
+  background: var(--navy); color: var(--gold-light); border-color: var(--navy);
+  transform: scale(1.06);
+}
+.abt-service-item h4 {
+  font-size: 1.2rem; color: var(--navy); margin-bottom: 0.6rem;
+  font-family: var(--font-display);
+}
+.abt-service-item p {
+  font-size: 0.92rem; color: var(--muted); line-height: 1.7;
+  margin-bottom: 1.2rem; flex-grow: 1;
+}
+.abt-service-arrow {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--cream); border: 1px solid var(--border);
+  color: var(--gold-dark); font-size: 0.85rem;
+  transition: var(--transition); align-self: flex-start;
+}
+.abt-service-item:hover .abt-service-arrow {
+  background: var(--gold-grad); color: var(--navy-darker); border-color: transparent;
+  transform: translateX(5px);
+}
+
+@media (max-width: 992px) {
+  .abt-services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 576px) {
+  .abt-services-grid { grid-template-columns: 1fr; }
+}
+
+
+/* =========================================================================
+   7. INDUSTRIES WE SERVE — Sector Chips
+   ========================================================================= */
+.abt-industries {
+  background: var(--navy); padding: 5.5rem 2rem; text-align: center;
+  color: #ffffff; position: relative; overflow: hidden;
+}
+.abt-industries-container { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
+.abt-industries-header { margin-bottom: 3rem; }
+.abt-industries-title {
+  font-size: 2.3rem; color: #ffffff; margin-bottom: 0.5rem;
+  font-family: var(--font-display);
+}
+.abt-industries-lead {
+  font-size: 1.02rem; color: rgba(255,255,255,0.7); max-width: 660px;
+  margin: 0 auto; line-height: 1.7;
+}
+
+.abt-industries-grid {
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem;
+}
+.abt-industry-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm); padding: 1.4rem 1rem;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  transition: var(--transition); cursor: default;
+}
+.abt-industry-chip:hover {
+  background: rgba(198, 154, 78, 0.15);
+  border-color: var(--gold); transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+}
+.abt-industry-chip i {
+  font-size: 1.6rem; color: var(--gold-light); transition: var(--transition);
+}
+.abt-industry-chip:hover i {
+  transform: scale(1.15);
+}
+.abt-industry-chip span {
+  font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.85);
+  line-height: 1.3; text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .abt-industries-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 768px) {
+  .abt-industries-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 480px) {
+  .abt-industries-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+
+/* =========================================================================
+   8. About CTA Section Override
+   ========================================================================= */
+.abt-cta {
+  background: var(--surface);
+}
