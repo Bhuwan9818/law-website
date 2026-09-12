@@ -233,16 +233,34 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   /* The collapse wrapper must NOT clip the panel */
   .ca-navbar .navbar-collapse { overflow: visible !important; }
 
+  /* ── Hover-to-open mega dropdown ── */
+  /* Controlled by JS via .ca-mega-open so we can track hover on the
+     position:fixed panel itself (pure CSS :hover can't bridge the gap) */
+  .ca-mega-dropdown.ca-mega-open > .ca-mega-panel {
+    display: block !important;
+    animation: megaFadeIn 0.2s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  /* Keep Bootstrap's .show class working (keyboard / click fallback) */
+  .ca-mega-dropdown.show > .ca-mega-panel {
+    display: block !important;
+  }
+
+  /* Rotate caret when open */
+  .ca-mega-dropdown.ca-mega-open > .dropdown-toggle::after,
+  .ca-mega-dropdown.show > .dropdown-toggle::after {
+    /* transform: rotate(180deg); */
+    /* transition: transform 0.2s ease; */
+  }
+
   .ca-mega-panel {
     position: fixed;        /* escape all overflow:hidden parents       */
-    /* top is set by JS below; left/width fill viewport                */
+    /* top is set by JS; left/width fill full viewport                  */
     left: 0;
     right: 0;
     width: 100%;
     max-width: 100%;
     margin: 0;
     border-radius: 0 0 var(--radius-md) var(--radius-md);
-    animation: megaFadeIn 0.22s cubic-bezier(0.16,1,0.3,1) both;
   }
 
   /* Inner content wrapper — constrain to max-width like the rest of the site */

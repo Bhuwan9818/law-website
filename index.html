@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="assets/vendor/fonts/fonts.css">
-    <link rel="stylesheet" href="assets/css/site.css?v=2">
+    <link rel="stylesheet" href="assets/css/site.css?v=4">
 </head>
 
 <body>
@@ -952,17 +952,22 @@
             });
         });
 
-        // ── Mega-menu positioning for position:fixed panel ──────────────────
-        // Because the panel is position:fixed, we must manually set its `top`
-        // to match the navbar's bottom edge.
+        // ── Mega-panel: hover-open with position:fixed support ──────────────
+        // Shared close-timer approach: mouseenter on either the li OR the
+        // fixed panel cancels a pending close, so the panel stays open while
+        // the user moves their mouse from the navbar into the dropdown content.
         (function() {
             var navbar  = document.querySelector('.ca-navbar');
             var panel   = document.querySelector('.ca-mega-panel');
+            var megaLi  = document.querySelector('.ca-mega-dropdown');
             var trigger = document.querySelector('.ca-mega-dropdown > .dropdown-toggle');
+
+            if (!megaLi || !panel) return;
+
+            var closeTimer = null;
 
             function alignPanel() {
                 if (!navbar || !panel) return;
-                // Only apply on desktop (≥992 px)
                 if (window.innerWidth >= 992) {
                     var rect = navbar.getBoundingClientRect();
                     panel.style.top = rect.bottom + 'px';
@@ -971,17 +976,35 @@
                 }
             }
 
-            // Align when the dropdown opens
+            function openMenu() {
+                clearTimeout(closeTimer);
+                if (window.innerWidth < 992) return;
+                alignPanel();
+                megaLi.classList.add('ca-mega-open');
+            }
+
+            function scheduleClose() {
+                closeTimer = setTimeout(function () {
+                    megaLi.classList.remove('ca-mega-open');
+                }, 150);
+            }
+
+            // Trigger <li>
+            megaLi.addEventListener('mouseenter', openMenu);
+            megaLi.addEventListener('mouseleave', scheduleClose);
+
+            // Fixed panel itself — cancel close when mouse enters
+            panel.addEventListener('mouseenter', function () { clearTimeout(closeTimer); });
+            panel.addEventListener('mouseleave', scheduleClose);
+
+            // Bootstrap click/keyboard fallback
             document.addEventListener('show.bs.dropdown', function(e) {
                 if (e.target === trigger || (trigger && trigger.contains(e.target))) {
                     alignPanel();
                 }
             });
 
-            // Re-align on resize
             window.addEventListener('resize', alignPanel, { passive: true });
-
-            // Initial alignment
             alignPanel();
         })();
 

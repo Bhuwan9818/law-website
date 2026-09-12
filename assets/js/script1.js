@@ -15,14 +15,24 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ── Mega-panel positioning for position:fixed dropdown ─────────────────
-    // The .ca-mega-panel uses position:fixed on desktop so it can escape any
-    // overflow:hidden ancestor. We calculate its top from the navbar rect.
+    // ── Mega-panel: hover-open with position:fixed support ─────────────────
+    // Problem: the panel is position:fixed so it's outside the li's box.
+    // Moving the mouse from the li into the panel briefly triggers mouseleave
+    // on the li, which would close the panel before it can be reached.
+    // Solution: share a close-timer between the li and the panel.
+    //   mouseenter → cancel timer → add .ca-mega-open
+    //   mouseleave → start 150ms timer → remove .ca-mega-open (if not cancelled)
     (function () {
         var navbar  = document.querySelector('.ca-navbar');
         var panel   = document.querySelector('.ca-mega-panel');
+        var megaLi  = document.querySelector('.ca-mega-dropdown');
         var trigger = document.querySelector('.ca-mega-dropdown > .dropdown-toggle');
 
+        if (!megaLi || !panel) return;
+
+        var closeTimer = null;
+
+        // ── Helpers ──────────────────────────────────────────────────────────
         function alignPanel() {
             if (!navbar || !panel) return;
             if (window.innerWidth >= 992) {
@@ -33,17 +43,41 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
-        // Align when Bootstrap fires the dropdown-show event
+        function openMenu() {
+            clearTimeout(closeTimer);
+            if (window.innerWidth < 992) return;   // mobile: use Bootstrap toggle
+            alignPanel();
+            megaLi.classList.add('ca-mega-open');
+        }
+
+        function scheduleClose() {
+            closeTimer = setTimeout(function () {
+                megaLi.classList.remove('ca-mega-open');
+            }, 150);   // 150 ms grace — enough time to move mouse into panel
+        }
+
+        // ── Trigger <li> ─────────────────────────────────────────────────────
+        megaLi.addEventListener('mouseenter', openMenu);
+        megaLi.addEventListener('mouseleave', scheduleClose);
+
+        // ── Fixed panel itself ────────────────────────────────────────────────
+        panel.addEventListener('mouseenter', function () {
+            clearTimeout(closeTimer);   // mouse arrived in panel — stay open
+        });
+        panel.addEventListener('mouseleave', scheduleClose);
+
+        // ── Keyboard / click fallback (Bootstrap events) ──────────────────────
         document.addEventListener('show.bs.dropdown', function (e) {
             if (trigger && (e.target === trigger || trigger.contains(e.target))) {
                 alignPanel();
             }
         });
 
-        // Re-align on resize (e.g. orientation change on tablet)
+        // ── Re-align on resize / orientation change ────────────────────────────
         window.addEventListener('resize', alignPanel, { passive: true });
 
         // Initial alignment
         alignPanel();
     })();
+
 });
