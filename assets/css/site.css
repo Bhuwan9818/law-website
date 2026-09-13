@@ -349,7 +349,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width: 991.98px) {
   .ca-navbar-inner { padding: 0 1rem; }
 
-  .ca-utility-links { display: none; }
+ 
 
   /* Allow the collapsed menu to scroll when content is long */
   .navbar-collapse {
@@ -1229,4 +1229,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width: 991px) {
   .section-1-left { max-width: 100%; flex-basis: 100%; }
   .sidebar { position: static; }
+}
+
+@media (max-width: 1440px) {
+   .ca-utility-links { display: none; }
 }
