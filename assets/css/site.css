@@ -152,6 +152,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .whatsapp_img { bottom: 18px; right: 18px; }
   .whatsapp-fab span { display: none; }
   .whatsapp-fab { padding: 13px; border-radius: 50%; }
+  .ca-utility-badge { display: none !important; }
+  .ca-utility-contact a { font-size: 0.58rem; }
+  .ca-utility-inner { padding: 6px 1rem; gap: 8px; }
 }
 
 /* -------------------------------------------------------------------------
@@ -1232,5 +1235,5 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 @media (max-width: 1440px) {
-   .ca-utility-links { display: none; }
+   .ca-utility-links { display: none !important; }
 }
