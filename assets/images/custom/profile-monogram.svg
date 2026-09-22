@@ -31,8 +31,8 @@
   <circle cx="320" cy="330" r="190" fill="none" stroke="#c69a4e" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="1 9"/>
 
   <!-- monogram -->
-  <text x="320" y="365" font-family="'Playfair Display', Georgia, serif" font-size="150" font-weight="700"
-        text-anchor="middle" fill="url(#pgold)">PK</text>
+  <text x="320" y="365" font-family="'Playfair Display', Georgia, serif" font-size="140" font-weight="700"
+        text-anchor="middle" fill="url(#pgold)">CA</text>
 
   <!-- small scale icon flourish above monogram -->
   <g transform="translate(320,205)" stroke="#ddb972" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -46,13 +46,13 @@
   </g>
 
   <!-- gold rule -->
-  <line x1="250" y1="460" x2="390" y2="460" stroke="#c69a4e" stroke-width="2"/>
+  <line x1="220" y1="460" x2="420" y2="460" stroke="#c69a4e" stroke-width="2"/>
 
   <!-- name + role -->
-  <text x="320" y="505" font-family="'Playfair Display', Georgia, serif" font-size="34" font-weight="700"
-        text-anchor="middle" fill="#ffffff">Pankaj Kumar</text>
-  <text x="320" y="535" font-family="Arial, sans-serif" font-size="14" letter-spacing="2.5"
-        text-anchor="middle" fill="#ddb972">ADVOCATE &amp; PRINCIPAL CONSULTANT</text>
+  <text x="320" y="505" font-family="'Playfair Display', Georgia, serif" font-size="19" font-weight="700"
+        text-anchor="middle" fill="#ffffff">Experienced Advocates &amp; Compliance Advisory Team</text>
+  <text x="320" y="535" font-family="Arial, sans-serif" font-size="13" letter-spacing="2.5"
+        text-anchor="middle" fill="#ddb972">LEGAL &amp; CORPORATE ADVISORY</text>
 
   <!-- credentials row -->
   <text x="320" y="580" font-family="Arial, sans-serif" font-size="12.5" letter-spacing="0.5"
