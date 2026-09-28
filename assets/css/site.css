@@ -165,7 +165,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   box-shadow: 0 4px 20px rgba(13, 22, 41, 0.06);
-  padding: 12px 0;
+  padding: 2px 0;
   position: sticky; top: 0; z-index: 1030;
   border-bottom: 1px solid var(--border-light);
   transition: var(--transition);
@@ -176,9 +176,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   display: flex; align-items: center; justify-content: space-between;
   position: relative;
 }
-.ca-brand { display: flex; align-items: center; gap: 10px; }
+.ca-brand { display: flex; flex-direction: column; align-items: center; }
 .ca-brand .nav-img { height: 48px; width: auto; object-fit: contain; }
-.ca-brand .vg-width { height: 36px; width: auto; object-fit: contain; }
+.ca-brand .vg-width { height: 30px; width: auto; object-fit: contain; }
 
 .navbar-nav .nav-link {
   font-weight: 600; color: var(--ink); text-transform: uppercase; font-size: 0.84rem;
