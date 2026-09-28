@@ -243,6 +243,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
      position:fixed panel itself (pure CSS :hover can't bridge the gap) */
   .ca-mega-dropdown.ca-mega-open > .ca-mega-panel {
     display: block !important;
+    top: 100% !important;
     animation: megaFadeIn 0.2s cubic-bezier(0.16,1,0.3,1) both;
   }
   /* Keep Bootstrap's .show class working (keyboard / click fallback) */
@@ -302,13 +303,35 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .ca-mega-col ul { list-style: none; padding: 0; margin: 0; }
 .ca-mega-col li { margin-bottom: 2px; }
-.ca-mega-col a {
-  display: block; padding: 6px 10px 6px 8px; border-radius: 6px; color: var(--ink-soft);
-  font-size: 0.86rem; border-left: 2px solid transparent; transition: var(--transition);
+.ca-mega-col a,
+.ca-mega-col .ca-service-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px 6px 8px;
+  border-radius: 6px;
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+  border-left: 2px solid transparent;
+  transition: var(--transition);
+  cursor: default;
 }
-.ca-mega-col a:hover {
-  background: var(--cream); color: var(--gold-dark); border-left-color: var(--gold);
-  padding-left: 12px; font-weight: 600;
+.ca-mega-col .ca-service-item i {
+  color: var(--gold);
+  font-size: 0.72rem;
+  transition: var(--transition);
+}
+.ca-mega-col a:hover,
+.ca-mega-col .ca-service-item:hover {
+  background: var(--cream);
+  color: var(--gold-dark);
+  border-left-color: var(--gold);
+  padding-left: 12px;
+  font-weight: 600;
+}
+.ca-mega-col .ca-service-item:hover i {
+  transform: translateX(2px);
+  color: var(--gold-dark);
 }
 
 .ca-mega-feature {
