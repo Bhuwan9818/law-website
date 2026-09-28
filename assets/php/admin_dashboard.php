@@ -1,12 +1,6 @@
 <?php
-session_start();
-if (!isset($_SESSION["admin"])) {
-    header("Location: admin_login.php");
-    exit;
-}
-
-$conn = new mysqli("localhost", "root", "", "contact_db");
-$result = $conn->query("SELECT * FROM contact ORDER BY created_at DESC");
+header("Location: ../../admin.html");
+exit;
 ?>
 
 <!DOCTYPE html>
