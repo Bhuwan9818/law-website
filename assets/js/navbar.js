@@ -125,17 +125,6 @@
                         <span class="ca-status-dot"></span>
                         <span id="caDynamicAnnounceText">${settings.announcement?.text || "India's Leading Advocate-Led Labour Law Practice"}</span>
                     </div>
-                    <div class="ca-utility-links">
-                        <a href="about.html">About Leadership</a>
-                        <span class="ca-utility-sep">|</span>
-                        <a href="blogs.html">Legal Insights &amp; Blogs</a>
-                        <span class="ca-utility-sep">|</span>
-                        <a href="complianceCalender.html">Compliance Calendar</a>
-                        <span class="ca-utility-sep">|</span>
-                        <a href="contact.html">Contact Us</a>
-                        <span class="ca-utility-sep">|</span>
-                        <a href="admin.html" style="color: var(--gold-light);"><i class="fa-solid fa-lock"></i> Staff Admin</a>
-                    </div>
                     <div class="ca-utility-contact">
                         <a href="tel:${settings.phoneRaw || '+917701901010'}"><i class="fas fa-phone"></i> ${settings.phone || '+91 7701901010'}</a>
                         <a href="mailto:${settings.email || 'info@conformityalliance.in'}"><i class="fas fa-envelope"></i> ${settings.email || 'info@conformityalliance.in'}</a>

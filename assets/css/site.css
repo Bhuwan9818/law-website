@@ -1013,6 +1013,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .ca-industries-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+@media (max-width: 420px) {
+  .ca-industries-grid { grid-template-columns: repeat(1, 1fr); }
+}
+
 /* -------------------------------------------------------------------------
    13. Client Testimonials & Social Proof
    ------------------------------------------------------------------------- */
