@@ -242,8 +242,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   /* Controlled by JS via .ca-mega-open so we can track hover on the
      position:fixed panel itself (pure CSS :hover can't bridge the gap) */
   .ca-mega-dropdown.ca-mega-open > .ca-mega-panel {
-    display: block !important;
     top: 100% !important;
+    display: block !important;
     animation: megaFadeIn 0.2s cubic-bezier(0.16,1,0.3,1) both;
   }
   /* Keep Bootstrap's .show class working (keyboard / click fallback) */
