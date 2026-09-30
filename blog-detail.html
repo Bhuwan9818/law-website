@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="blogPageTitle">Legal Insight | Conformity Alliance</title>
+    <meta name="description" id="blogPageDesc" content="Advocate-led statutory compliance and labour law analysis.">
+    <link rel="icon" href="assets/images/last-favicon.png" type="image/x-icon">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/css/site.css">
+
+    <style>
+        #readingProgress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--gold-grad);
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+        }
+        .article-header {
+            background: radial-gradient(circle at top center, #15223e 0%, #070b14 100%);
+            color: #fff;
+            padding: 80px 0 50px 0;
+            border-bottom: 2px solid var(--gold);
+        }
+        .article-header h1 {
+            font-size: 2.8rem;
+            font-family: var(--font-display);
+            color: #fff;
+            line-height: 1.3;
+            margin-bottom: 24px;
+        }
+        .article-author-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.12);
+        }
+        .author-avatar-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gold-grad);
+            color: #0d1629;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .article-content-wrapper {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            padding: 48px 42px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            color: #334155;
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+        .article-content-wrapper h2, .article-content-wrapper h3 {
+            font-family: var(--font-display);
+            color: var(--navy);
+            margin-top: 36px;
+            margin-bottom: 16px;
+        }
+        .ca-article-callout {
+            background: rgba(198, 154, 78, 0.08);
+            border-left: 4px solid var(--gold);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 28px 0;
+            color: #1e293b;
+        }
+        .article-content-wrapper ul {
+            padding-left: 24px;
+            margin-bottom: 24px;
+        }
+        .article-content-wrapper li {
+            margin-bottom: 8px;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .share-whatsapp { background: #25D366; }
+        .share-linkedin { background: #0077b5; }
+        .share-copy { background: #475569; }
+    </style>
+</head>
+<body>
+    <div id="readingProgress"></div>
+
+    <div id="main">
+
+        <!-- Top Utility Bar -->
+        <header class="ca-utility-bar">
+            <div class="ca-utility-inner">
+                <div class="ca-utility-badge">
+                    <span class="ca-status-dot"></span>
+                    <span>India's Leading Advocate-Led Labour Law Practice</span>
+                </div>
+                <div class="ca-utility-links">
+                    <a href="tradeLicence.html">Labour Law Services</a>
+                    <span class="ca-utility-sep">|</span>
+                    <a href="registration.html">Registrations &amp; Licences</a>
+                    <span class="ca-utility-sep">|</span>
+                    <a href="blogs.html">Legal Blogs &amp; Insights</a>
+                    <span class="ca-utility-sep">|</span>
+                    <a href="admin.html"><i class="fa-solid fa-lock"></i> Admin Portal</a>
+                </div>
+                <div class="ca-utility-contact">
+                    <a href="tel:+917701901010"><i class="fas fa-phone"></i> +91 7701901010</a>
+                    <a href="mailto:info@conformityalliance.in"><i class="fas fa-envelope"></i> info@conformityalliance.in</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Navigation -->
+        <nav class="navbar navbar-expand-lg ca-navbar" aria-label="Main Navigation">
+            <div class="container-fluid ca-navbar-inner">
+                <a class="navbar-brand ca-brand" href="index.html" aria-label="Conformity Alliance Home">
+                    <img src="assets/images/Picture1.png" alt="Conformity Alliance Logo" class="nav-img">
+                    <img src="assets/images/logo.png" alt="Conformity Alliance" class="vg-width">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNav" aria-controls="mainNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto align-items-lg-center gap-lg-1">
+                        <li class="nav-item"><a class="nav-link hrhover" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link hrhover" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link hrhover" href="service.html">Services</a></li>
+                        <li class="nav-item"><a class="nav-link hrhover active" href="blogs.html">Legal Articles</a></li>
+                        <li class="nav-item"><a class="nav-link hrhover" href="contact.html">Contact Us</a></li>
+                        <li class="nav-item ms-lg-2">
+                            <a href="contact.html" class="btn btn-warning" style="background: var(--gold-grad); color: #090e1a; font-weight: 700; border: none; border-radius: 6px; padding: 8px 18px;">
+                                Book Consultation
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ARTICLE HEADER -->
+        <section class="article-header">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div style="margin-bottom: 18px;">
+                            <a href="blogs.html" style="color: var(--gold-light); font-size: 0.88rem; text-decoration: none;">
+                                &larr; Back to all Legal Articles
+                            </a>
+                            <span style="color: rgba(255,255,255,0.4); margin: 0 10px;">|</span>
+                            <span class="badge-category" id="articleCategoryBadge" style="background: rgba(198,154,78,0.2); color: var(--gold-light); border: 1px solid var(--gold);">
+                                Legal Advisory
+                            </span>
+                        </div>
+                        
+                        <h1 id="articleTitleEl">Article Headline</h1>
+
+                        <div class="article-author-card">
+                            <div class="author-avatar-circle">
+                                <i class="fa-solid fa-gavel"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 700; color: #fff;" id="articleAuthorName">Adv. Senior Counsel</div>
+                                <div style="font-size: 0.82rem; color: #94a3b8;" id="articleAuthorRole">Partner - Labour Law Practice</div>
+                            </div>
+                            <div style="margin-left: auto; font-size: 0.85rem; color: #cbd5e1;">
+                                <i class="fa-regular fa-clock" style="color: var(--gold);"></i> <span id="articleReadTime">5 min read</span>
+                                <span style="margin: 0 8px;">&bull;</span>
+                                <span id="articleDate">March 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ARTICLE BODY -->
+        <section style="padding: 60px 0 90px 0; background: var(--cream);">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        
+                        <div class="article-content-wrapper" id="articleBodyContent">
+                            <!-- Injected via JS -->
+                        </div>
+
+                        <!-- Share Bar -->
+                        <div style="margin-top: 36px; padding: 24px; background: #fff; border-radius: var(--radius-md); border: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+                            <div style="font-weight: 700; color: var(--navy);">
+                                <i class="fa-solid fa-share-nodes" style="color: var(--gold); margin-right: 8px;"></i> Share this Legal Insight:
+                            </div>
+                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                <a id="shareWhatsappBtn" href="#" target="_blank" class="share-btn share-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                                <a id="shareLinkedinBtn" href="#" target="_blank" class="share-btn share-linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                                <button type="button" id="btnCopyLink" class="share-btn share-copy" style="border: none; cursor: pointer;"><i class="fa-solid fa-link"></i> Copy Link</button>
+                            </div>
+                        </div>
+
+                        <!-- Legal Disclaimer -->
+                        <div style="margin-top: 24px; padding: 20px 24px; background: rgba(9, 14, 26, 0.04); border-radius: var(--radius-md); border: 1px dashed var(--border); font-size: 0.85rem; color: var(--muted); line-height: 1.7;">
+                            <strong>Statutory Disclaimer:</strong> As per the Bar Council of India regulations, the contents of this article are solely for educational and informational purposes and do not constitute formal attorney-client solicitation or legal advice. For actionable legal counsel, please reach out to our registered advocates.
+                        </div>
+
+                        <!-- Consultation Box -->
+                        <div style="margin-top: 40px; background: var(--navy); color: #fff; border-radius: var(--radius-lg); padding: 40px; text-align: center; border: 1px solid var(--gold);">
+                            <h3 style="font-family: var(--font-display); color: var(--gold-light); font-size: 2rem; margin-bottom: 12px;">Need Expert Legal Representation?</h3>
+                            <p style="color: #cbd5e1; max-width: 680px; margin: 0 auto 24px auto; font-size: 1rem;">
+                                Our senior advocates conduct comprehensive statutory audits and represent enterprises before Labour Commissioners across India.
+                            </p>
+                            <a href="contact.html" class="btn btn-warning" style="background: var(--gold-grad); color: #090e1a; font-weight: 700; border: none; padding: 12px 30px; border-radius: 8px;">
+                                Schedule Consultation with an Advocate
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer" style="background: var(--navy-darker); color: #cbd5e1; padding: 70px 0 30px 0; border-top: 2px solid var(--gold);">
+            <div class="container">
+                <div class="row g-4 mb-5">
+                    <div class="col-lg-4">
+                        <img src="assets/images/logo.png" alt="Conformity Alliance" style="max-height: 48px; margin-bottom: 20px;">
+                        <p style="color: #94a3b8; font-size: 0.92rem; line-height: 1.8;">
+                            Premier Labour Law, Statutory Audits, Licensing, and Corporate Compliance firm led by Advocates, CAs, and CS professionals across India.
+                        </p>
+                    </div>
+                    <div class="col-lg-4">
+                        <h4 style="color: #fff; font-family: var(--font-display); margin-bottom: 20px;">Quick Links</h4>
+                        <ul style="list-style: none; padding: 0; line-height: 2.2;">
+                            <li><a href="index.html" class="hrhover">Home</a></li>
+                            <li><a href="about.html" class="hrhover">About Leadership</a></li>
+                            <li><a href="blogs.html" class="hrhover">Labour Law Blog &amp; Insights</a></li>
+                            <li><a href="complianceCalender.html" class="hrhover">Compliance Calendar</a></li>
+                            <li><a href="contact.html" class="hrhover">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h4 style="color: #fff; font-family: var(--font-display); margin-bottom: 20px;">Contact Office</h4>
+                        <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 10px;">
+                            <i class="fas fa-map-marker-alt" style="color: var(--gold); margin-right: 8px;"></i>
+                            Kh 88, Pn 4, 20 - Point Colony, Ashram Road, Village Budhpur, New Delhi-110036
+                        </p>
+                        <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 10px;">
+                            <i class="fas fa-phone" style="color: var(--gold); margin-right: 8px;"></i>
+                            +91 7701901010
+                        </p>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">
+                            <i class="fas fa-envelope" style="color: var(--gold); margin-right: 8px;"></i>
+                            info@conformityalliance.in
+                        </p>
+                    </div>
+                </div>
+
+                <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; font-size: 0.84rem; color: #64748b; display: flex; justify-content: space-between; flex-wrap: wrap;">
+                    <div>&copy; 2026 Conformity Alliance. All Rights Reserved.</div>
+                    <div><a href="admin.html" style="color: var(--gold-light);"><i class="fa-solid fa-lock"></i> Staff Admin Portal</a></div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/db.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Reading progress bar
+            window.addEventListener('scroll', () => {
+                const docElem = document.documentElement;
+                const winScroll = docElem.scrollTop || document.body.scrollTop;
+                const height = docElem.scrollHeight - docElem.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('readingProgress').style.width = scrolled + '%';
+            });
+
+            // Read slug
+            const params = new URLSearchParams(window.location.search);
+            const slug = params.get('slug') || params.get('id');
+
+            const allBlogs = CADB.getBlogs();
+            let currentBlog = null;
+
+            if (slug) {
+                currentBlog = CADB.getBlogBySlug(slug);
+            }
+            if (!currentBlog && allBlogs.length > 0) {
+                currentBlog = allBlogs[0];
+            }
+
+            if (!currentBlog) {
+                document.getElementById('articleTitleEl').textContent = 'Article Not Found';
+                document.getElementById('articleBodyContent').innerHTML = '<p>The requested legal article could not be located.</p>';
+                return;
+            }
+
+            const cat = CADB.getCategoryById(currentBlog.categoryId);
+            const catName = cat ? cat.name : 'Legal Advisory';
+
+            // Head / SEO
+            document.title = currentBlog.metaTitle || (currentBlog.title + ' | Conformity Alliance');
+            document.getElementById('blogPageDesc').setAttribute('content', currentBlog.metaDesc || currentBlog.excerpt || '');
+
+            // Content
+            document.getElementById('articleTitleEl').textContent = currentBlog.title;
+            document.getElementById('articleCategoryBadge').textContent = catName;
+            document.getElementById('articleAuthorName').textContent = currentBlog.authorName || 'Adv. Senior Counsel';
+            document.getElementById('articleAuthorRole').textContent = currentBlog.authorRole || 'Labour Practice Advocate';
+            document.getElementById('articleReadTime').textContent = currentBlog.readTime || '5 min read';
+            document.getElementById('articleDate').textContent = new Date(currentBlog.publishedAt || currentBlog.updatedAt).toLocaleDateString();
+
+            document.getElementById('articleBodyContent').innerHTML = currentBlog.content || `<p>${(currentBlog.excerpt || '').replace(/\n/g, '</p><p>')}</p>`;
+
+            // Social Sharing Links
+            const pageUrl = encodeURIComponent(window.location.href);
+            const pageTitle = encodeURIComponent(currentBlog.title);
+
+            document.getElementById('shareWhatsappBtn').href = `https://api.whatsapp.com/send?text=${pageTitle}%20${pageUrl}`;
+            document.getElementById('shareLinkedinBtn').href = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
+
+            document.getElementById('btnCopyLink').addEventListener('click', () => {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Article link copied to clipboard!');
+            });
+        });
+    </script>
+</body>
+</html>

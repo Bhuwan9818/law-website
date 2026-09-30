@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Control Center | Conformity Alliance</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="assets/images/last-favicon.png" type="image/x-icon">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body class="admin-body">
+
+    <!-- =========================================================================
+         1. LOGIN AUTHENTICATION SCREEN (Shown if logged out)
+         ========================================================================= -->
+    <div id="adminLoginSection" class="admin-login-wrapper" style="display: none;">
+        <div class="admin-login-card">
+            <div class="admin-login-brand">
+                <i class="fa-solid fa-scale-balanced"></i>
+            </div>
+            <h2>Conformity Alliance</h2>
+            <p>Executive Compliance Management Portal</p>
+            
+            <div id="loginError" style="display: none; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: #f87171; padding: 10px; border-radius: 8px; font-size: 0.84rem; margin-bottom: 20px;"></div>
+
+            <form id="adminLoginForm">
+                <div class="form-group" style="text-align: left;">
+                    <label class="form-label" for="loginUsername">Username</label>
+                    <div style="position: relative;">
+                        <i class="fa-solid fa-user-shield" style="position: absolute; left: 14px; top: 14px; color: var(--admin-text-muted);"></i>
+                        <input type="text" id="loginUsername" class="form-control" style="padding-left: 40px;" value="admin" required placeholder="Enter username">
+                    </div>
+                </div>
+
+                <div class="form-group" style="text-align: left; margin-bottom: 24px;">
+                    <label class="form-label" for="loginPassword">Master Password</label>
+                    <div style="position: relative;">
+                        <i class="fa-solid fa-lock" style="position: absolute; left: 14px; top: 14px; color: var(--admin-text-muted);"></i>
+                        <input type="password" id="loginPassword" class="form-control" style="padding-left: 40px;" value="admin123" required placeholder="Enter password">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-gold w-100" style="justify-content: center; padding: 12px; font-size: 0.95rem;">
+                    <i class="fa-solid fa-shield-halved"></i> Access Admin Dashboard
+                </button>
+            </form>
+
+            <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--admin-border-subtle); font-size: 0.8rem; color: var(--admin-text-muted);">
+                Default Credentials: <code>admin</code> / <code>admin123</code><br>
+                <a href="index.html" style="color: var(--admin-gold-light); margin-top: 8px; display: inline-block;">&larr; Return to Public Website</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- =========================================================================
+         2. MASTER ADMIN APP CONTAINER (Shown when logged in)
+         ========================================================================= -->
+    <div id="adminAppSection" class="admin-app" style="display: none;">
+        
+        <!-- SIDEBAR -->
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <div class="admin-brand-icon">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                </div>
+                <div class="admin-brand-text">
+                    <h4>Conformity</h4>
+                    <span>Admin Suite</span>
+                </div>
+            </div>
+
+            <ul class="admin-nav-list">
+                <li class="admin-nav-category">Core Navigation</li>
+                <li class="admin-nav-item active">
+                    <a href="#overview" data-view="overview">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                
+                <li class="admin-nav-category">Content &amp; Pages</li>
+                <li class="admin-nav-item">
+                    <a href="#services" data-view="services">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <span>Services Manager</span>
+                        <span class="admin-nav-badge" id="sidebarServiceCount">0</span>
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a href="#blogs" data-view="blogs">
+                        <i class="fa-solid fa-newspaper"></i>
+                        <span>Blogs &amp; Articles</span>
+                        <span class="admin-nav-badge" id="sidebarBlogCount">0</span>
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a href="#categories" data-view="categories">
+                        <i class="fa-solid fa-tags"></i>
+                        <span>Categories</span>
+                    </a>
+                </li>
+
+                <li class="admin-nav-category">Site &amp; Enquiries</li>
+                <li class="admin-nav-item">
+                    <a href="#website" data-view="website">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span>Website CMS</span>
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a href="#leads" data-view="leads">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                        <span>Leads &amp; Inquiries</span>
+                        <span class="admin-nav-badge" id="sidebarLeadsCount">0</span>
+                    </a>
+                </li>
+
+                <li class="admin-nav-category">Settings &amp; Backup</li>
+                <li class="admin-nav-item">
+                    <a href="#system" data-view="system">
+                        <i class="fa-solid fa-database"></i>
+                        <span>Database &amp; Sync</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="admin-sidebar-footer">
+                <div class="admin-user-card">
+                    <div class="admin-user-avatar">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <div class="admin-user-info">
+                        <div class="admin-user-name" id="adminUserNameDisplay">Admin</div>
+                        <div class="admin-user-role" id="adminUserRoleDisplay">Master Administrator</div>
+                    </div>
+                    <button type="button" class="admin-logout-btn" title="Log Out">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN PANEL -->
+        <main class="admin-main">
+            <!-- Topbar -->
+            <header class="admin-topbar">
+                <div class="admin-topbar-left">
+                    <button class="admin-mobile-toggle" id="mobileNavToggle" aria-label="Toggle Menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="admin-breadcrumb">
+                        <span>Portal</span>
+                        <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; color: var(--admin-text-muted);"></i>
+                        <span class="current" id="currentViewBreadcrumb">Dashboard</span>
+                    </div>
+                </div>
+
+                <div class="admin-topbar-right">
+                    <a href="index.html" target="_blank" class="admin-view-site-btn">
+                        <i class="fa-solid fa-globe"></i>
+                        <span>View Live Website</span>
+                    </a>
+                </div>
+            </header>
+
+            <!-- Dynamic Views Container -->
+            <div class="admin-content-container">
+
+                <!-- -------------------------------------------------------------
+                     VIEW 1: DASHBOARD OVERVIEW
+                     ------------------------------------------------------------- -->
+                <div id="view-overview" class="admin-view-pane">
+                    <div class="admin-page-header">
+                        <div>
+                            <h1>Executive Overview</h1>
+                            <p>Real-time analytics and management control for Conformity Alliance.</p>
+                        </div>
+                        <div class="admin-header-actions">
+                            <button class="btn-gold" onclick="document.querySelector('.admin-nav-item a[data-view=\'services\']').click(); setTimeout(() => document.getElementById('btnAddNewService').click(), 100);">
+                                <i class="fa-solid fa-plus"></i> New Service Page
+                            </button>
+                            <button class="btn-secondary-dark" onclick="document.querySelector('.admin-nav-item a[data-view=\'blogs\']').click(); setTimeout(() => document.getElementById('btnAddNewBlog').click(), 100);">
+                                <i class="fa-solid fa-pen-nib"></i> Write Article
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Stat KPI Grid -->
+                    <div class="admin-stats-grid">
+                        <div class="admin-stat-card">
+                            <div class="admin-stat-info">
+                                <span class="label">Total Services</span>
+                                <h3 id="statTotalServices">0</h3>
+                                <span class="trend"><i class="fa-solid fa-circle-check"></i> Dynamic Active</span>
+                            </div>
+                            <div class="admin-stat-icon-wrapper">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                        </div>
+
+                        <div class="admin-stat-card">
+                            <div class="admin-stat-info">
+                                <span class="label">Legal Articles</span>
+                                <h3 id="statTotalBlogs">0</h3>
+                                <span class="trend"><i class="fa-solid fa-newspaper"></i> Published</span>
+                            </div>
+                            <div class="admin-stat-icon-wrapper">
+                                <i class="fa-solid fa-book-open"></i>
+                            </div>
+                        </div>
+
+                        <div class="admin-stat-card">
+                            <div class="admin-stat-info">
+                                <span class="label">Service Categories</span>
+                                <h3 id="statTotalCategories">0</h3>
+                                <span class="trend"><i class="fa-solid fa-tags"></i> Taxonomies</span>
+                            </div>
+                            <div class="admin-stat-icon-wrapper">
+                                <i class="fa-solid fa-layer-group"></i>
+                            </div>
+                        </div>
+
+                        <div class="admin-stat-card">
+                            <div class="admin-stat-info">
+                                <span class="label">Client Inquiries</span>
+                                <h3 id="statTotalLeads">0</h3>
+                                <span class="trend"><i class="fa-solid fa-bolt"></i> Direct Leads</span>
+                            </div>
+                            <div class="admin-stat-icon-wrapper">
+                                <i class="fa-solid fa-envelope-open-text"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links & Recent Inquiries -->
+                    <div class="row g-4">
+                        <div class="col-lg-8">
+                            <div class="admin-card">
+                                <div class="admin-card-header">
+                                    <h3><i class="fa-solid fa-inbox" style="color: var(--admin-gold-light); margin-right: 8px;"></i> Recent Client Inquiries</h3>
+                                    <button class="btn-secondary-dark" style="padding: 6px 14px; font-size: 0.8rem;" onclick="document.querySelector('.admin-nav-item a[data-view=\'leads\']').click();">
+                                        View All &rarr;
+                                    </button>
+                                </div>
+                                <div class="admin-table-responsive">
+                                    <table class="admin-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Client / Organization</th>
+                                                <th>Contact</th>
+                                                <th>Service Required</th>
+                                                <th>Status</th>
+                                                <th>Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="overviewRecentLeads">
+                                            <!-- Injected via JS -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="admin-card">
+                                <div class="admin-card-header">
+                                    <h3><i class="fa-solid fa-bolt" style="color: var(--admin-gold-light); margin-right: 8px;"></i> Quick Actions</h3>
+                                </div>
+                                <div style="display: flex; flex-direction: column; gap: 12px;">
+                                    <a href="service.html" target="_blank" class="btn-secondary-dark" style="justify-content: flex-start;">
+                                        <i class="fa-solid fa-magnifying-glass" style="color: var(--admin-gold);"></i>
+                                        <span>Test Dynamic Service Viewer</span>
+                                    </a>
+                                    <a href="blogs.html" target="_blank" class="btn-secondary-dark" style="justify-content: flex-start;">
+                                        <i class="fa-solid fa-newspaper" style="color: #3b82f6;"></i>
+                                        <span>View Public Blog Hub</span>
+                                    </a>
+                                    <button class="btn-secondary-dark" style="justify-content: flex-start;" onclick="document.querySelector('.admin-nav-item a[data-view=\'website\']').click();">
+                                        <i class="fa-solid fa-bullhorn" style="color: #10b981;"></i>
+                                        <span>Update Announcement Banner</span>
+                                    </button>
+                                    <button class="btn-secondary-dark" style="justify-content: flex-start;" onclick="CADB.exportDatabaseJson()">
+                                        <i class="fa-solid fa-download" style="color: #8b5cf6;"></i>
+                                        <span>Download Database Backup</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- -------------------------------------------------------------
+                     VIEW 2: SERVICES MANAGER
+                     ------------------------------------------------------------- -->
+                <div id="view-services" class="admin-view-pane" style="display: none;">
+                    <div class="admin-page-header">
+                        <div>
+                            <h1>Dynamic Services Manager</h1>
+                            <p>Create, update, preview, and manage legal and compliance service pages.</p>
+                        </div>
+                        <div class="admin-header-actions">
+                            <button class="btn-gold" id="btnAddNewService">
+                                <i class="fa-solid fa-plus"></i> Add New Service Page
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Filter Bar -->
+                    <div class="admin-card" style="padding: 16px 20px; margin-bottom: 24px;">
+                        <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; gap: 12px; flex-wrap: wrap; flex: 1;">
+                                <div class="admin-search-box">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input type="text" id="serviceSearchInput" class="admin-search-input" placeholder="Search services by title, keywords...">
+                                </div>
+                                <select id="serviceCategoryFilter" class="admin-select">
+                                    <option value="">All Categories</option>
+                                </select>
+                                <select id="serviceStatusFilter" class="admin-select">
+                                    <option value="">All Statuses</option>
+                                    <option value="published">Published</option>
+                                    <option value="draft">Draft</option>
+                                </select>
+                            </div>
+                            <div style="color: var(--admin-text-muted); font-size: 0.85rem;">
+                                Live Synchronization Active
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Services Grid -->
+                    <div id="servicesGridContainer" class="admin-items-grid">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- -------------------------------------------------------------
+                     VIEW 3: BLOGS & ARTICLES MANAGER
+                     ------------------------------------------------------------- -->
+                <div id="view-blogs" class="admin-view-pane" style="display: none;">
+                    <div class="admin-page-header">
+                        <div>
+                            <h1>Blogs &amp; Legal Articles</h1>
+                            <p>Publish insightful labour law analysis, compliance guides, and statutory gazette alerts.</p>
+                        </div>
+                        <div class="admin-header-actions">
+                            <a href="blogs.html" target="_blank" class="btn-secondary-dark">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> View Blog Hub
+                            </a>
+                            <button class="btn-gold" id="btnAddNewBlog">
+                                <i class="fa-solid fa-plus"></i> Write New Article
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Filter Bar -->
+                    <div class="admin-card" style="padding: 16px 20px; margin-bottom: 24px;">
+                        <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center;">
+                            <div class="admin-search-box">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" id="blogSearchInput" class="admin-search-input" placeholder="Search articles by title, tags...">
+                            </div>
+                            <select id="blogCategoryFilter" class="admin-select">
+                                <option value="">All Categories</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Blogs Grid -->
+                    <div id="blogsGridContainer" class="admin-items-grid">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- -------------------------------------------------------------
+                     VIEW 4: CATEGORIES MANAGER
+                     ------------------------------------------------------------- -->
+                <div id="view-categories" class="admin-view-pane" style="display: none;">
+                    <div class="admin-page-header">
+                        <div>
+                            <h1>Categories &amp; Taxonomies</h1>
+                            <p>Organize services, blogs, and compliance disciplines under unified categories.</p>
+                        </div>
+                        <div class="admin-header-actions">
+                            <button class="btn-gold" id="btnAddNewCategory">
+                                <i class="fa-solid fa-plus"></i> Add Category
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <div class="admin-table-responsive">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 50px;">Icon</th>
+                                        <th>Category Name</th>
+                                        <th>Slug</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                        <th style="width: 110px;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="categoriesTableBody">
+                                    <!-- Injected via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- -------------------------------------------------------------
+                     VIEW 5: WEBSITE CMS & GENERAL SETTINGS
+                     ------------------------------------------------------------- -->
+                <div id="view-website" class="admin-view-pane" style="display: none;">
+                    <div class="admin-page-header">
+                        <div>
+                            <h1>Website CMS &amp; Content Controls</h1>
+                            <p>Update phone numbers, email addresses, announcement bar, hero section, and client reviews.</p>
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <form id="siteSettingsForm">
+                            <div class="admin-tabs">
+                                <button type="button" class="admin-tab-btn active" data-tab="tab-general">General &amp; Contacts</button>
+                                <button type="button" class="admin-tab-btn" data-tab="tab-announcement">Announcement Bar</button>
+                                <button type="button" class="admin-tab-btn" data-tab="tab-hero">Hero Banner &amp; CTA</button>
+                                <button type="button" class="admin-tab-btn" data-tab="tab-stats">Stats Counters</button>
+                                <button type="button" class="admin-tab-btn" data-tab="tab-testimonials">Client Reviews</button>
+                            </div>
+
+                            <!-- Tab 1: General & Contacts -->
+                            <div id="tab-general" class="tab-pane active">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Company Legal Name</label>
+                                        <input type="text" id="setCompanyName" class="form-control" value="Conformity Alliance">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Tagline</label>
+                                        <input type="text" id="setTagline" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Official Phone Number</label>
+                                        <input type="text" id="setPhone" class="form-control" value="+91 7701901010">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Official Email Address</label>
+                                        <input type="email" id="setEmail" class="form-control" value="info@conformityalliance.in">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">WhatsApp Contact Number (No +)</label>
+                                        <input type="text" id="setWhatsapp" class="form-control" value="917701901010">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Head Office Address</label>
+                                        <textarea id="setAddress" class="form-control" style="min-height: 80px;"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Business Working Hours</label>
+                                        <input type="text" id="setHours" class="form-control" value="Mon - Sat: 9:30 AM - 6:30 PM">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab 2: Announcement Bar -->
+                            <div id="tab-announcement" class="tab-pane">
+                                <div class="form-group">
+                                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: #fff;">
+                                        <input type="checkbox" id="setAnnounceEnabled" style="width: 18px; height: 18px;">
+                                        <span><strong>Enable Top Announcement Bar on All Pages</strong></span>
+                                    </label>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Badge Text</label>
+                                        <input type="text" id="setAnnounceBadge" class="form-control" placeholder="e.g. Legal Notice">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Announcement Message</label>
+                                        <input type="text" id="setAnnounceText" class="form-control" placeholder="Important gazette announcement...">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Action Link Text</label>
+                                        <input type="text" id="setAnnounceLinkText" class="form-control" placeholder="Schedule Consultation">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Action Link URL</label>
+                                        <input type="text" id="setAnnounceLinkUrl" class="form-control" placeholder="contact.html">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab 3: Hero Section -->
+                            <div id="tab-hero" class="tab-pane">
+                                <div class="form-group">
+                                    <label class="form-label">Hero Badge Text</label>
+                                    <input type="text" id="setHeroBadge" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Main Heading</label>
+                                    <input type="text" id="setHeroTitle" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Hero Subtitle</label>
+                                    <textarea id="setHeroSubtitle" class="form-control"></textarea>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Primary Button Text</label>
+                                        <input type="text" id="setHeroBtn1Text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Primary Button Link</label>
+                                        <input type="text" id="setHeroBtn1Link" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Secondary Button Text</label>
+                                        <input type="text" id="setHeroBtn2Text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Secondary Button Link</label>
+                                        <input type="text" id="setHeroBtn2Link" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab 4: Stats -->
+                            <div id="tab-stats" class="tab-pane">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Enterprise Clients</label>
+                                        <input type="text" id="setStatClients" class="form-control" value="500+">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Compliance Success Rate</label>
+                                        <input type="text" id="setStatCompliance" class="form-control" value="100%">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Years of Experience</label>
+                                        <input type="text" id="setStatExp" class="form-control" value="15+">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">States &amp; UTs Covered</label>
+                                        <input type="text" id="setStatStates" class="form-control" value="28+">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab 5: Testimonials -->
+                            <div id="tab-testimonials" class="tab-pane">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+                                    <h4 style="color: #fff; margin: 0;">Client Endorsements &amp; Reviews</h4>
+                                    <button type="button" class="btn-gold" id="btnAddNewTestimonial" style="padding: 6px 14px; font-size: 0.82rem;">
+                                        <i class="fa-solid fa-plus"></i> Add Testimonial
+                                    </button>
+                                </div>
+                                <div id="testimonialsListContainer">
+                                    <!-- Injected via JS -->
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--admin-border-subtle); display: flex; justify-content: flex-end;">
+                                <button type="submit" class="btn-gold">
+                                    <i class="fa-solid fa-floppy-disk"></i> Save &amp; Publish Website Settings
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- -------------------------------------------------------------
+                     VIEW 6: LEADS & INQUIRIES HUB
+                     ------------------------------------------------------------- -->
+                <div id="view-leads" class="admin-view-pane" style="display: none;">
+                    <div class="admin-page-header">
+                        <div>
+                            <h1>Client Inquiries &amp; Consultation Leads</h1>
+                            <p>Manage prospective client inquiries received from consultation forms and service pages.</p>
+                        </div>
+                        <div class="admin-header-actions">
+                            <button class="btn-gold" id="btnExportLeadsCsv">
+                                <i class="fa-solid fa-file-csv"></i> Export Leads to CSV
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="admin-card" style="padding: 16px 20px; margin-bottom: 24px;">
+                        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+                            <div class="admin-search-box">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" id="leadSearchInput" class="admin-search-input" placeholder="Search by name, company, email, phone...">
+                            </div>
+                            <select id="leadStatusFilter" class="admin-select">
+                                <option value="">All Statuses</option>
+                                <option value="new">New</option>
+                                <option value="contacted">Contacted</option>
+                                <option value="in-progress">In Progress</option>
+                                <option value="closed">Closed</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <div class="admin-table-responsive">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name &amp; Organization</th>
+                                        <th>Phone</th>
+                                        <th>Email</th>
+                                        <th>Service Interested</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th style="width: 100px;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="leadsTableBody">
+                                    <!-- Injected via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- -------------------------------------------------------------
+                     VIEW 7: DATABASE & SYSTEM BACKUP
+                     ------------------------------------------------------------- -->
+                <div id="view-system" class="admin-view-pane" style="display: none;">
+                    <div class="admin-page-header">
+                        <div>
+                            <h1>Database Management &amp; Security</h1>
+                            <p>Download full JSON backups, restore database snapshots, or update credentials.</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="admin-card">
+                                <div class="admin-card-header">
+                                    <h3><i class="fa-solid fa-database" style="color: var(--admin-gold); margin-right: 8px;"></i> Database Backup &amp; Migration</h3>
+                                </div>
+                                <p style="color: var(--admin-text-secondary); font-size: 0.88rem; margin-bottom: 20px;">
+                                    Export a complete snapshot of all services, blogs, categories, settings, and leads in JSON format.
+                                </p>
+                                <div style="display: flex; flex-direction: column; gap: 14px;">
+                                    <button class="btn-gold" id="btnExportDatabaseJson" style="justify-content: center;">
+                                        <i class="fa-solid fa-download"></i> Export Full Site Database (JSON)
+                                    </button>
+                                    
+                                    <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--admin-border-subtle);">
+                                        <label class="form-label">Restore Database from JSON Backup File</label>
+                                        <input type="file" id="importDatabaseFile" class="form-control" accept=".json">
+                                    </div>
+
+                                    <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--admin-border-subtle);">
+                                        <button type="button" class="btn-danger-dark w-100" id="btnResetDatabaseFactory" style="justify-content: center; padding: 10px;">
+                                            <i class="fa-solid fa-rotate-left"></i> Reset Database to Factory Defaults
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="admin-card">
+                                <div class="admin-card-header">
+                                    <h3><i class="fa-solid fa-key" style="color: var(--admin-gold); margin-right: 8px;"></i> Admin Access &amp; Security</h3>
+                                </div>
+                                <form id="adminSecurityForm">
+                                    <div class="form-group">
+                                        <label class="form-label">Administrator Display Name</label>
+                                        <input type="text" id="secAdminName" class="form-control" value="Senior Compliance Administrator" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Admin Username</label>
+                                        <input type="text" id="secAdminUsername" class="form-control" value="admin" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Admin Master Password</label>
+                                        <input type="password" id="secAdminPassword" class="form-control" value="admin123" required>
+                                    </div>
+                                    <button type="submit" class="btn-gold w-100" style="justify-content: center; margin-top: 10px;">
+                                        <i class="fa-solid fa-shield-check"></i> Update Security Credentials
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+
+    <!-- =========================================================================
+         MODAL 1: SERVICE PAGE BUILDER & EDITOR
+         ========================================================================= -->
+    <div id="serviceEditorModal" class="admin-modal-overlay">
+        <div class="admin-modal-dialog">
+            <div class="admin-modal-header">
+                <h3 id="serviceModalTitle"><i class="fa-solid fa-briefcase" style="color: var(--admin-gold); margin-right: 8px;"></i> Create Service Page</h3>
+                <button type="button" class="admin-modal-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="serviceEditorForm" style="display: flex; flex-direction: column; height: calc(100% - 70px);">
+                <div class="admin-modal-body">
+                    <input type="hidden" id="srvInputId">
+
+                    <!-- Tabs inside modal -->
+                    <div class="admin-tabs">
+                        <button type="button" class="admin-tab-btn active" data-tab="srv-tab-general">Overview</button>
+                        <button type="button" class="admin-tab-btn" data-tab="srv-tab-acts">Statutory Acts</button>
+                        <button type="button" class="admin-tab-btn" data-tab="srv-tab-steps">Process Steps</button>
+                        <button type="button" class="admin-tab-btn" data-tab="srv-tab-docs">Documents Required</button>
+                        <button type="button" class="admin-tab-btn" data-tab="srv-tab-faqs">FAQs</button>
+                        <button type="button" class="admin-tab-btn" data-tab="srv-tab-seo">SEO &amp; Meta</button>
+                    </div>
+
+                    <!-- Modal Tab 1: General -->
+                    <div id="srv-tab-general" class="tab-pane active">
+                        <div class="form-group">
+                            <label class="form-label">Service Title <span class="req">*</span></label>
+                            <input type="text" id="srvInputTitle" class="form-control" required placeholder="e.g. POSH Act Compliance &amp; Internal Committee (IC) Governance">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">URL Slug</label>
+                                <input type="text" id="srvInputSlug" class="form-control" placeholder="auto-generated-from-title">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Category</label>
+                                <select id="srvInputCategory" class="form-control"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Hero Badge / Highlight Text</label>
+                                <input type="text" id="srvInputBadge" class="form-control" placeholder="e.g. Mandatory for 10+ Employees">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">FontAwesome Icon Class</label>
+                                <input type="text" id="srvInputIcon" class="form-control" value="fa-solid fa-scale-balanced" placeholder="fa-solid fa-shield-halved">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Short Excerpt (Card Summary)</label>
+                            <textarea id="srvInputExcerpt" class="form-control" style="min-height: 70px;" placeholder="Brief 2-sentence summary..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Full Service Legal Overview</label>
+                            <textarea id="srvInputFullDesc" class="form-control" style="min-height: 140px;" placeholder="Detailed statutory analysis, obligations, penalties, and legal representation scope..."></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Publish Status</label>
+                                <select id="srvInputStatus" class="form-control">
+                                    <option value="published">Published (Live)</option>
+                                    <option value="draft">Draft</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="display: flex; align-items: center; padding-top: 28px;">
+                                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: #fff;">
+                                    <input type="checkbox" id="srvInputFeatured" style="width: 18px; height: 18px;">
+                                    <span>Feature on Homepage / Mega-Menu</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Tab 2: Acts -->
+                    <div id="srv-tab-acts" class="tab-pane">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <label class="form-label" style="margin: 0;">Applicable Statutory Acts &amp; Regulations</label>
+                            <button type="button" class="btn-secondary-dark" id="btnAddActRow" style="padding: 4px 12px; font-size: 0.8rem;">
+                                <i class="fa-solid fa-plus"></i> Add Act
+                            </button>
+                        </div>
+                        <div id="srvActsContainer" class="dynamic-builder-box">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Modal Tab 3: Steps -->
+                    <div id="srv-tab-steps" class="tab-pane">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <label class="form-label" style="margin: 0;">Step-by-Step Execution Workflow</label>
+                            <button type="button" class="btn-secondary-dark" id="btnAddStepRow" style="padding: 4px 12px; font-size: 0.8rem;">
+                                <i class="fa-solid fa-plus"></i> Add Step
+                            </button>
+                        </div>
+                        <div id="srvStepsContainer" class="dynamic-builder-box">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Modal Tab 4: Docs -->
+                    <div id="srv-tab-docs" class="tab-pane">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <label class="form-label" style="margin: 0;">Required Documents Checklist</label>
+                            <button type="button" class="btn-secondary-dark" id="btnAddDocRow" style="padding: 4px 12px; font-size: 0.8rem;">
+                                <i class="fa-solid fa-plus"></i> Add Document
+                            </button>
+                        </div>
+                        <div id="srvDocsContainer" class="dynamic-builder-box">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Modal Tab 5: FAQs -->
+                    <div id="srv-tab-faqs" class="tab-pane">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <label class="form-label" style="margin: 0;">Frequently Asked Statutory Questions</label>
+                            <button type="button" class="btn-secondary-dark" id="btnAddFaqRow" style="padding: 4px 12px; font-size: 0.8rem;">
+                                <i class="fa-solid fa-plus"></i> Add FAQ
+                            </button>
+                        </div>
+                        <div id="srvFaqsContainer" class="dynamic-builder-box">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Modal Tab 6: SEO -->
+                    <div id="srv-tab-seo" class="tab-pane">
+                        <div class="form-group">
+                            <label class="form-label">Meta SEO Title</label>
+                            <input type="text" id="srvInputMetaTitle" class="form-control" placeholder="Title for Google search results">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Meta Description</label>
+                            <textarea id="srvInputMetaDesc" class="form-control" style="min-height: 80px;" placeholder="Search result snippet (150-160 chars)"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Target Keywords (comma separated)</label>
+                            <input type="text" id="srvInputMetaKeywords" class="form-control" placeholder="e.g. factory act license, labour compliance consultant">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-modal-footer">
+                    <button type="button" class="btn-secondary-dark admin-modal-cancel">Cancel</button>
+                    <button type="submit" class="btn-gold"><i class="fa-solid fa-floppy-disk"></i> Save &amp; Publish Service Page</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- =========================================================================
+         MODAL 2: BLOG & ARTICLE EDITOR
+         ========================================================================= -->
+    <div id="blogEditorModal" class="admin-modal-overlay">
+        <div class="admin-modal-dialog">
+            <div class="admin-modal-header">
+                <h3 id="blogModalTitle"><i class="fa-solid fa-newspaper" style="color: var(--admin-gold); margin-right: 8px;"></i> Write Legal Article</h3>
+                <button type="button" class="admin-modal-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="blogEditorForm" style="display: flex; flex-direction: column; height: calc(100% - 70px);">
+                <div class="admin-modal-body">
+                    <input type="hidden" id="blogInputId">
+
+                    <div class="form-group">
+                        <label class="form-label">Article Headline <span class="req">*</span></label>
+                        <input type="text" id="blogInputTitle" class="form-control" required placeholder="e.g. The Four Labour Codes: Employer Preparedness &amp; Wage Restructuring">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">URL Slug</label>
+                            <input type="text" id="blogInputSlug" class="form-control" placeholder="auto-generated-slug">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Category</label>
+                            <select id="blogInputCategory" class="form-control"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Author Name</label>
+                            <input type="text" id="blogInputAuthorName" class="form-control" value="Adv. Senior Counsel">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Author Role / Designation</label>
+                            <input type="text" id="blogInputAuthorRole" class="form-control" value="Partner - Labour Practice">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Estimated Read Time</label>
+                            <input type="text" id="blogInputReadTime" class="form-control" value="6 min read">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Featured Image Path / URL</label>
+                            <input type="text" id="blogInputImage" class="form-control" placeholder="assets/images/consultation1.jpg">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Tags (comma-separated)</label>
+                            <input type="text" id="blogInputTags" class="form-control" placeholder="Labour Codes, Gratuity, CLRA, PF">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Short Excerpt</label>
+                        <textarea id="blogInputExcerpt" class="form-control" style="min-height: 70px;" placeholder="Brief introductory summary..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Article Content (Supports HTML / Rich Markup)</label>
+                        <textarea id="blogInputContent" class="form-control" style="min-height: 220px; font-family: monospace; font-size: 0.85rem;" placeholder="<p>Full legal analysis...</p>"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Status</label>
+                        <select id="blogInputStatus" class="form-control">
+                            <option value="published">Published</option>
+                            <option value="draft">Draft</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="admin-modal-footer">
+                    <button type="button" class="btn-secondary-dark admin-modal-cancel">Cancel</button>
+                    <button type="submit" class="btn-gold"><i class="fa-solid fa-floppy-disk"></i> Save Article</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- =========================================================================
+         MODAL 3: CATEGORY EDITOR
+         ========================================================================= -->
+    <div id="categoryEditorModal" class="admin-modal-overlay">
+        <div class="admin-modal-dialog" style="max-width: 580px;">
+            <div class="admin-modal-header">
+                <h3><i class="fa-solid fa-tags" style="color: var(--admin-gold); margin-right: 8px;"></i> Category Editor</h3>
+                <button type="button" class="admin-modal-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="categoryEditorForm">
+                <div class="admin-modal-body">
+                    <input type="hidden" id="catInputId">
+
+                    <div class="form-group">
+                        <label class="form-label">Category Name <span class="req">*</span></label>
+                        <input type="text" id="catInputName" class="form-control" required placeholder="e.g. Statutory Labour Audits">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Slug</label>
+                            <input type="text" id="catInputSlug" class="form-control" placeholder="statutory-labour-audits">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Applied To</label>
+                            <select id="catInputType" class="form-control">
+                                <option value="service">Services Only</option>
+                                <option value="blog">Blogs Only</option>
+                                <option value="both">Both Services &amp; Blogs</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">FontAwesome Icon</label>
+                            <input type="text" id="catInputIcon" class="form-control" value="fa-solid fa-scale-balanced">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Theme Color</label>
+                            <input type="color" id="catInputColor" class="form-control" value="#c69a4e" style="height: 46px; padding: 4px;">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <textarea id="catInputDesc" class="form-control" style="min-height: 80px;" placeholder="Brief scope of this category..."></textarea>
+                    </div>
+                </div>
+
+                <div class="admin-modal-footer">
+                    <button type="button" class="btn-secondary-dark admin-modal-cancel">Cancel</button>
+                    <button type="submit" class="btn-gold"><i class="fa-solid fa-floppy-disk"></i> Save Category</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- =========================================================================
+         MODAL 4: TESTIMONIAL EDITOR
+         ========================================================================= -->
+    <div id="testimonialEditorModal" class="admin-modal-overlay">
+        <div class="admin-modal-dialog" style="max-width: 540px;">
+            <div class="admin-modal-header">
+                <h3><i class="fa-solid fa-star" style="color: var(--admin-gold); margin-right: 8px;"></i> Add Client Review</h3>
+                <button type="button" class="admin-modal-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="testimonialEditorForm">
+                <div class="admin-modal-body">
+                    <input type="hidden" id="tstInputId">
+                    <div class="form-group">
+                        <label class="form-label">Client / Executive Name <span class="req">*</span></label>
+                        <input type="text" id="tstInputName" class="form-control" required placeholder="e.g. Vikram Malhotra">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Designation</label>
+                            <input type="text" id="tstInputRole" class="form-control" placeholder="VP - Human Resources">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Company Name</label>
+                            <input type="text" id="tstInputCompany" class="form-control" placeholder="Apex Logistics Ltd.">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Endorsement Review Text <span class="req">*</span></label>
+                        <textarea id="tstInputReview" class="form-control" required style="min-height: 100px;" placeholder="Share the feedback..."></textarea>
+                    </div>
+                </div>
+                <div class="admin-modal-footer">
+                    <button type="button" class="btn-secondary-dark admin-modal-cancel">Cancel</button>
+                    <button type="submit" class="btn-gold"><i class="fa-solid fa-floppy-disk"></i> Save Review</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Toast Container -->
+    <div id="caAdminToasts"></div>
+
+    <!-- Scripts -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/db.js"></script>
+    <script src="assets/js/admin.js"></script>
+
+    <!-- Tab Handler helper -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.admin-tabs').forEach(tabGroup => {
+                tabGroup.querySelectorAll('.admin-tab-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const targetId = this.getAttribute('data-tab');
+                        const parent = this.closest('.admin-card, .admin-modal-dialog, .admin-view-pane');
+                        if (!parent) return;
+
+                        tabGroup.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+
+                        parent.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+                        const targetPane = parent.querySelector('#' + targetId);
+                        if (targetPane) targetPane.classList.add('active');
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
